@@ -1,0 +1,19 @@
+#!/bin/bash
+
+SO_PATH="$HOME/KHAN-BYPASS/bypasstata.cpython-312.so"
+URL="https://github.com/Silentboy302/KHAN-BYPASS/main/bypasstata.cpython-312.so"
+
+mkdir -p "$HOME/KHAN-BYPASS"
+
+if [ ! -f "$SO_PATH" ]; then
+    echo "[*] bypasstata.so not found. Downloading..."
+    curl -L -o "$SO_PATH" "$URL"
+    if [ $? -ne 0 ]; then
+        echo "[!] Download failed"
+        exit 1
+    fi
+else
+    echo "[*] bypasstata.so already exists."
+fi
+
+python -c "import bypasstata"
